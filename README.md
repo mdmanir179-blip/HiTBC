@@ -1,11 +1,106 @@
-<div align="center">
+# WMS Cashback & Rewards Portal 🎁
 
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
+একটি আধুনিক, সুরক্ষিত এবং সম্পূর্ণ ক্যাশব্যাক এবং প্রুফ ভেরিফিকেশন প্ল্যাটফর্ম (Customer & Admin Portals সহ) যা **Vercel**-এ কোনো এরর ছাড়াই ১০০% সহজে ডেপ্লয় (Deploy) করার জন্য তৈরি করা হয়েছে।
 
-  <h1>Built with AI Studio</h2>
+---
 
-  <p>The fastest path from prompt to production with Gemini.</p>
+## ⚡ Vercel-এ এরর ছাড়া ডেপ্লয় করার সহজ নিয়ম (Step-by-Step Guide)
 
-  <a href="https://aistudio.google.com/apps">Start building</a>
+### পদ্ধতি ১: GitHub + Vercel Dashboard (সবচেয়ে সহজ এবং রিকমেন্ডেড)
 
-</div>
+১. **GitHub-এ প্রজেক্ট আপলোড করুন**:
+   ```bash
+   git init
+   git add .
+   git commit -m "Deploy WMS Cashback Portal to Vercel"
+   git branch -M main
+   git remote add origin https://github.com/<আপনার-ইউজারনেম>/<রিপোজিটরির-নাম>.git
+   git push -u origin main
+   ```
+
+২. **Vercel-এ যান**:
+   - [vercel.com](https://vercel.com)-এ যান এবং আপনার GitHub অ্যাকাউন্ট দিয়ে Sign In করুন।
+
+৩. **প্রজেক্ট ইমপোর্ট করুন**:
+   - **"Add New..."** বাটনে ক্লিক করে **"Project"** সিলেক্ট করুন।
+   - আপনার আপলোড করা GitHub রিপোজিটরিটি সিলেক্ট করে **"Import"** চাপুন।
+
+৪. **বিল্ড সেটিংস যাচাই করুন (স্বয়ংক্রিয়ভাবে ডিটেক্ট হবে)**:
+   - **Framework Preset**: `Vite` (অটো ডিটেক্টেড)
+   - **Root Directory**: `./`
+   - **Build Command**: `npm run build`
+   - **Output Directory**: `dist`
+   - **Install Command**: `npm install`
+
+৫. **Deploy বাটনে ক্লিক করুন**:
+   - **"Deploy"** চাপুন। মাত্র ১ মিনিটের মধ্যে আপনার সাইট লাইভ হয়ে যাবে এবং Vercel আপনাকে একটি ফ্রি ডোমেইন লিংক (যেমন: `your-portal.vercel.app`) দেবে।
+
+---
+
+### পদ্ধতি ২: Vercel CLI দিয়ে সরাসরি টার্মিনাল থেকে ডেপ্লয়
+
+যদি আপনি সরাসরি টার্মিনাল থেকে ডেপ্লয় করতে চান:
+```bash
+# Vercel CLI ইনস্টল ও ডেপ্লয়
+npx vercel
+
+# প্রোডাকশন বিল্ড ডেপ্লয়
+npx vercel --prod
+```
+
+---
+
+## 🛠️ Vercel কনফিগারেশন ফাইল (vercel.json)
+
+এই প্রজেক্টে ইতিমধ্যে রুট ডিরেক্টরিতে `vercel.json` তৈরি করা আছে:
+```json
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "cleanUrls": true,
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
+```
+> **কেন এটি গুরুত্বপূর্ণ?** Vite সিঙ্গেল পেজ অ্যাপ্লিকেশনে (SPA) পেজ রিলোড দিলে যেন কোনো 404 Not Found এরর না আসে, তার জন্য এই রিরাইট রুলটি নিশ্চিত করে।
+
+---
+
+## 📱 মোবাইল অ্যাপ ইনস্টল করার নিয়ম (PWA Mobile App)
+
+এই সফটওয়্যারটি এখন একটি সম্পূর্ণ **Progressive Web App (PWA)**। যেকোনো মোবাইল বা কম্পিউটারে এটি নেটিভ অ্যাপের মতো ইনস্টল করা যায়:
+1. **Android ফোনে**: ক্রোম ব্রাউজারে লিংকটি খুলে অ্যাপের উপরের **"Install App"** বাটনে চাপ দিন বা ব্রাউজারের ৩-ডট মেনু থেকে **"Install app / Add to Home screen"** চাপুন।
+2. **iPhone / iPad-এ**: Safari ব্রাউজারের নিচের **Share বাটনে** চাপ দিয়ে **"Add to Home Screen"** সিলেক্ট করুন।
+3. **ফিচারসমূহ**:
+   - হোম স্ক্রিন আইকন ও স্প্ল্যাশ স্ক্রিন
+   - ফুলস্ক্রিন অ্যাপ মোড (কোনো ব্রাউজার URL বার থাকবে না)
+   - অফলাইন ক্যাশিং সাপোর্ট (ইন্টারনেট সাময়িক ড্রপ করলেও অ্যাপ চলবে)
+   - নেটিভ বটম নেভিগেশন বার (Bottom Navigation Bar)
+
+---
+
+## ✨ প্রধান ফিচারসমূহ (Key Features)
+
+### ১. কাস্টমার পোর্টাল (Customer Portal):
+- **ক্যাশব্যাক অফার ক্যাটালগ**: Amazon, Flipkart, Blinkit, Daraz ইত্যাদি পণ্যের ১০০% পর্যন্ত ক্যাশব্যাক অফার।
+- **স্পেশাল ভেরিফিকেশন কোড**: অফার কার্ডে সিক্রেট কোড (যেমন: `WMS-AMZ-902`) সরাসরি যাচাইকরণ।
+- **৩টি স্ক্রিনশট প্রুফ সরাসরি আপলোড**:
+  1. অর্ডার বিস্তারিত স্ক্রিনশট (Order Details Screenshot)
+  2. পেমেন্ট রসিদ / ইনভয়েস (Payment Receipt Screenshot)
+  3. ৫-স্টার রিভিউ এবং রেটিং স্ক্রিনশট (Rating Review Screenshot)
+- **নমুনা ইমেজ ও ইনস্ট্যান্ট ফাইল প্রিভিউ**: ফাইল ড্রপ বা স্যাম্পল ইমেজ দিয়ে দ্রুত টেস্ট করার সুবিধা।
+- **UPI / Bkash / Nagad / Bank Details**: ক্যাশব্যাক পাওয়ার মেথড ইনপুট।
+- **রিয়েল-টাইম ক্লেইম ট্র্যাকার**: কাস্টমার তার সাবমিট করা ক্লেইম স্ট্যাটাস (Under Review, Approved, Paid, Rejected) দেখতে পারেন।
+
+### ২. অ্যাডমিন কনসোল (Admin Dashboard):
+- **সিকিউর অ্যাডমিন লগইন**: ইউজার আইডি: `admin` | পাসওয়ার্ড: `admin123`
+- **লাইভ কেপিআই মেট্রিক্স**: Total Claims, Pending Reviews, Approved & Paid Payouts, Total Cashback Amount।
+- **হাই-রেজোলিউশন প্রুফ ইন্সপেক্টর**: অ্যাডমিন স্ক্রিনশটগুলো জুম, রোটেট এবং ফুলস্ক্রিনে যাচাই করতে পারেন।
+- **অটো-কোড ম্যাচ ডিটেক্টর**: স্পেশাল কোড মিলেছে কিনা তা এক নজরে গ্রিন ভ্যালিডেশন ব্যাজ দিয়ে দেখায়।
+- **১-ক্লিকে অনুমোদন ও প্রত্যাখ্যান**: কারণ সহ রিজেক্ট বা ট্রানজ্যাকশন আইডি সহ পে-আউট অ্যাপ্রুভ।
+- **নতুন অফার তৈরি ও এডিট**: নতুন পণ্য, প্ল্যাটফর্ম, ক্যাশব্যাক পার্সেন্টেজ এবং স্পেশাল কোড সেট করা।
+- **CSV রিপোর্ট এক্সপোর্ট**: সমস্ত ক্লেইম ডাটা এক্সেল শিটে নামানোর সুবিধা।
+- **লোকাল পারসিস্টেন্স**: ব্রাউজার রিলোড করলেও ডাটা সেভ থাকে।

@@ -1,0 +1,6 @@
+{
+  "name": "WMS Cashback & Rewards Portal",
+  "description": "Production-ready cashback claim verification and rewards management portal with Vercel deployment setup.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
